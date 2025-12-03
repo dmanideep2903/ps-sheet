@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timezone Test</title>
+</head>
+<body>
+    <h1>UTC to IST Conversion Test</h1>
+    <div id="results"></div>
+
+    <script>
+        const testDates = [
+            '2025-11-28T10:07:11.711199+00:00',
+            '2025-11-30T02:24:00+00:00',
+            '2025-11-29T10:00:00+00:00'
+        ];
+
+        let html = '<table border="1" cellpadding="10"><tr><th>UTC Input</th><th>JavaScript Date</th><th>Intl.DateTimeFormat (IST)</th><th>Expected IST</th></tr>';
+
+        testDates.forEach(dateStr => {
+            const date = new Date(dateStr);
+            
+            // Using Intl.DateTimeFormat for IST
+            const options = {
+                timeZone: 'Asia/Kolkata',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            
+            const formatter = new Intl.DateTimeFormat('en-IN', options);
+            const formatted = formatter.format(date);
+            
+            // Manual calculation (UTC + 5:30)
+            const utcTime = date.getTime();
+            const istTime = new Date(utcTime + (5.5 * 60 * 60 * 1000));
+            const manualIST = istTime.toISOString().replace('T', ' ').substring(0, 19);
+            
+            html += `<tr>
+                <td>${dateStr}</td>
+                <td>${date.toISOString()}</td>
+                <td>${formatted}</td>
+                <td>${manualIST}</td>
+            </tr>`;
+        });
+
+        html += '</table>';
+        
+        // Additional debug info
+        html += '<h2>Debug Info</h2>';
+        html += '<pre>';
+        html += 'Browser Timezone: ' + Intl.DateTimeFormat().resolvedOptions().timeZone + '\n';
+        html += 'Current Time (Browser): ' + new Date().toString() + '\n';
+        html += 'Current Time (IST): ' + new Intl.DateTimeFormat('en-IN', {
+            timeZone: 'Asia/Kolkata',
+            dateStyle: 'full',
+            timeStyle: 'long'
+        }).format(new Date()) + '\n';
+        html += '</pre>';
+
+        document.getElementById('results').innerHTML = html;
+    </script>
+</body>
+</html>

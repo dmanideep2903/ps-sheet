@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+react-app/build/
+electron-app/build/
+electron-app/dist/
+backend/bin/
+backend/obj/
+
+# Cache
+.cache/
+*/node_modules/.cache/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.mdf
+*.ldf
+*.bak
+DatabaseBackups/
+
+# Temporary files
+tmp/
+tmp_*/
+*.tmp
+
+# User data
+electron-app/appData/

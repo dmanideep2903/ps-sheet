@@ -1,0 +1,11 @@
+{
+  "companyId": "revit2025",
+  "companyName": "Revit",
+  "apiBaseUrl": "http://72.61.226.129:5001",
+  "useRemoteBackend": true,
+  "autoUpdate": {
+    "enabled": true,
+    "checkOnStartup": true,
+    "updateServerUrl": "https://github.com/yourusername/deskattendance/releases/latest"
+  }
+}

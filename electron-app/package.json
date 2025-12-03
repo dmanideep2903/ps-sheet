@@ -1,0 +1,53 @@
+{
+  "name": "ps-sheet",
+  "version": "1.0.0",
+  "description": "Electron desktop app with React frontend and .NET Core backend",
+  "main": "main.js",
+  "author": "Pivot",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "build-react": "cd ../react-app && npm run build && xcopy /e /i /y build ../electron-app/build",
+    "publish-backend": "cd ../backend && dotnet publish -c Release -r win-x64 --self-contained true -o ../../electron-app/backend",
+    "dist": "electron-builder --win",
+    "publish": "electron-builder --win --publish always"
+  },
+  "build": {
+    "appId": "com.pivot.pssheet",
+    "productName": "PS Sheet",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!**/*.md",
+      "!node_modules",
+      "build/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/logo512.png",
+      "forceCodeSigning": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2",
+    "node-wifi": "^2.0.16"
+  },
+  "devDependencies": {
+    "electron": "^38.2.1",
+    "electron-builder": "^26.0.12"
+  }
+}

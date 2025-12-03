@@ -1,0 +1,29 @@
+========================================
+HOW TO SEARCH FOR "Asia/Kolkata" IN APP
+========================================
+
+Step 1: Open PS Sheet app
+
+Step 2: Press F12 key on keyboard
+        → DevTools window opens
+
+Step 3: Click "Sources" tab at the top
+        (next to Console, Elements, etc.)
+
+Step 4: Press Ctrl+Shift+F on keyboard
+        → Search box appears at bottom left
+
+Step 5: Type in search box: Asia/Kolkata
+
+Step 6: Press Enter
+
+Step 7: Look at the results:
+        - If you see results (like "1 result in 1 file")
+          → IST code is loaded ✓
+        
+        - If you see "0 results" or nothing
+          → Old code is still cached ✗
+
+========================================
+
+Tell me what you see!
