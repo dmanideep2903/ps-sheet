@@ -85,6 +85,10 @@ fi
 # Create Nginx configuration
 echo "🌐 Configuring Nginx..."
 
+# Ensure nginx sites directories exist
+mkdir -p /etc/nginx/sites-available
+mkdir -p /etc/nginx/sites-enabled
+
 cat > "$NGINX_CONF" << 'NGINX_EOF'
 server {
     listen 80;
